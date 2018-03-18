@@ -6,7 +6,7 @@ var app = new Vue({
     priority: 'low',
     show: "all",
     drag: {},
-    url: "http://localhost:3000/api/items/"
+    url: "http://165.227.177.116:3004/api/items/"
   },
   computed: {
     activeItems: function() {
