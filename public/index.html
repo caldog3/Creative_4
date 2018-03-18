@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+      <link rel="stylesheet" href="/styles.css"/>
+</head>
+<nav>
+  <ul>
+    <li id="topbar">ASH's Pok&eacute;dex</li>
+  </ul>
+</nav>
+<body>
+  <div class="tab">
+  <button class="tablinks" onclick="openOption(event, 'Home')" id="defaultOpen">HOME</button>
+  <button class="tablinks" onclick="openOption(event, 'ToCatch')">LEFT TO CATCH</button>
+  <button class="tablinks" onclick="openOption(event, 'Pokedex')">POK&eacute;DEX</button>
+  <button class="tablinks" onclick="openOption(event, 'Item')" id="bottomTab">ITEM</button>
+</div>
+
+<div id="Home" class "tabcontent">
+  <br><br><br>
+  <h1> Welcome!! <h2>
+
+</div>
+<div id="ToCatch" class="tabcontent">
+  <br><br><br><br><br>
+  <h1> Pokemon to catch? </h1>
+  <br><br>
+  <div class="container" id="todo">
+    <div id="app">
+        <p v-show="activeItems.length === 0">You have caught all of your desired Pok&eacute;mon thus far! Well done!</p>
+        <form v-on:submit.prevent="addItem">
+            <label>Task name</label>
+            <input type="text" v-model="text">
+            <label>Priority</label>
+            <select name="priority" v-model="priority">
+              <option value=low selected>Low</option>
+              <option value=med>Med</option>
+              <option value=high>High</option>
+            </select>
+            <button type="submit">Add</button>
+        </form>
+        <div class="controls">
+            <button v-on:click="showAll()">Show All</button>
+            <button v-on:click="showActive()">Show Active</button>
+            <button v-on:click="showCompleted()">Show Completed</button>
+            <button v-on:click="deleteCompleted()">Delete Completed</button>
+            <button v-on:click="sortByPriority()">Sort by Priority</button>
+        </div>
+        <br><br>
+        <ul>
+            <li v-for="item in filteredItems" draggable="true" v-on:dragstart="dragItem(item)" v-on:dragover.prevent v-on:drop="dropItem(item)">
+                <input type="checkbox" v-model="item.completed" v-on:click="completeItem(item)" />
+                <label v-bind:class="{ completed: item.completed }">{{ item.text }} | {{ item.priority }}</label>
+                <button v-on:click="increasePriority(item)" class="increase">Up</button>
+                <button v-on:click="decreasePriority(item)" class="decrease">Down</button>
+                <button v-on:click="deleteItem(item)" class="delete">X</button>
+            </li>
+        </ul>
+    </div>
+  </div>
+</div>
+<div id="Pokedex" class="tabcontent">
+  <h1>Pok&eacute;mon</h1>
+  <form>
+    <label id="print"><br>Enter a Pok&eacute;mon by name or number:</label><br><br>
+    <input id="pokemonInput" type="text"><br><br>
+    <input id="pokemonSubmit" type="submit" value="Check">
+  </form>
+  <p><br></p>
+  <div id="pikachu"></div>
+  <div id="ash"></div><br>
+  <div id="pokemonResults">
+      <div class="pokeball">
+      <div class="pokeball__button"></div>
+      </div>
+  </div>
+</div>
+<div id="Item" class="tabcontent">
+  <h1><br>Item</h1>
+  <form>
+    <label id="print"><br>Enter an item name:</label><br><br>
+    <input id="itemInput" type="text"><br><br>
+    <input id="itemSubmit" type="submit" value="Check">
+  </form><br>
+  <div id="itemResults"></div>
+  <br>
+</div>
+
+<script>
+var myVar;
+
+function myFunction() {
+    myVar = setTimeout(showPage, 3000);
+}
+
+function showPage() {
+  document.getElementById("loader").style.display = "none";
+  document.getElementById("myDiv").style.display = "block";
+}
+</script>
+<script>
+function openOption(evt, option) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(option).style.display = "block";
+    evt.currentTarget.className += " active";
+}
+</script>
+<script>document.getElementById("defaultOpen").click();</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="script.js"></script>
+
+
+
+<footer>
+ <a href="https://github.com/caldog3/Creative_3.git">My Github</a>
+</footer>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js" integrity="sha256-mpnrJ5DpEZZkwkE1ZgkEQQJW/46CSEh/STrZKOB/qoM=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.js" integrity="sha256-pU9euBaEcVl8Gtg+FRYCtin2vKLN8sx5/4npZDmY2VA=" crossorigin="anonymous"></script>
+<script src="/script.js"></script>
+</html>
