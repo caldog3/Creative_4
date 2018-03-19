@@ -4,8 +4,10 @@ var app = new Vue({
     items: [],
     text: "",
     priority: 'low',
+    bally: 'regular',
     show: "all",
     drag: {},
+    //url: "http://localhost:3004/api/items/"
     url: "http://165.227.177.116:3004/api/items/"
   },
   computed: {

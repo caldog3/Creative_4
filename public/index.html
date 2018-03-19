@@ -16,43 +16,40 @@
   <button class="tablinks" onclick="openOption(event, 'Item')" id="bottomTab">ITEM</button>
 </div>
 
-<div id="HomeTab" class "tabcontent">
-  <br><br><br>
-  <h1 style="text-align: center;">  Welcome!! <h2>
-  <br><br><br>
-  <br><br><br>
-</div>
-
 <div id="ToCatch" class="tabcontent">
   <br><br><br><br>
   <h1> Pokemon to catch? </h1>
   <br><br>
   <div class="container" id="todo">
     <div id="app">
-        <p v-show="activeItems.length === 0">You have caught all of your desired Pok&eacute;mon thus far! Well done!</p>
+        <p v-show="activeItems.length === 0">You have caught all of your desired Pok&eacute;mon!</p><br>
+        <p style="font-size:.7em;"> (add another Pok&eacute;mon if you would like)</p><br>
         <form v-on:submit.prevent="addItem">
-            <label>Task name</label>
-            <input type="text" v-model="text">
-            <label>Priority</label>
-            <select name="priority" v-model="priority">
+            <label style="font-size: 1.1em;">Pok&eacute;mon</label>
+            <input type="text" v-model="text" class="todoInput">
+            <label style="font-size: 1.1em;">Priority</label>
+            <select name="priority" v-model="priority" class="todoSelect">
               <option value=low selected>Low</option>
               <option value=med>Med</option>
               <option value=high>High</option>
             </select>
-            <button type="submit">Add</button>
+            <br>
+            <button type="submit" class="todoSubmit">Add</button>
         </form>
+        <br><h4 style="padding-left: 5em;"> Select View Type:</h4><br>
         <div class="controls">
-            <button v-on:click="showAll()">Show All</button>
-            <button v-on:click="showActive()">Show Active</button>
-            <button v-on:click="showCompleted()">Show Completed</button>
-            <button v-on:click="deleteCompleted()">Delete Completed</button>
-            <button v-on:click="sortByPriority()">Sort by Priority</button>
+            <button v-on:click="showAll()">All</button>
+            <button v-on:click="showActive()">Active</button>
+            <button v-on:click="showCompleted()">Completed</button>
+            <br>
+            <button v-on:click="deleteCompleted()">Delete Checked</button>
+            <button v-on:click="sortByPriority()">Priority Sort</button>
         </div>
         <br><br>
         <ul>
-            <li v-for="item in filteredItems" draggable="true" v-on:dragstart="dragItem(item)" v-on:dragover.prevent v-on:drop="dropItem(item)">
+            <li id="todos" v-for="item in filteredItems" draggable="true" v-on:dragstart="dragItem(item)" v-on:dragover.prevent v-on:drop="dropItem(item)">
                 <input type="checkbox" v-model="item.completed" v-on:click="completeItem(item)" />
-                <label v-bind:class="{ completed: item.completed }">{{ item.text }} | {{ item.priority }}</label>
+                <label v-bind:class="{ completed: item.completed }"style="padding-left:.5em;line-height:1.5em;">{{ item.text }} | {{ item.priority }}</label>
                 <button v-on:click="increasePriority(item)" class="increase">Up</button>
                 <button v-on:click="decreasePriority(item)" class="decrease">Down</button>
                 <button v-on:click="deleteItem(item)" class="delete">X</button>
@@ -76,6 +73,13 @@
       <div class="pokeball__button"></div>
       </div>
   </div>
+</div>
+<div id="HomeTab" class="tabcontent">
+  <br><br><br>
+  <h1 style="text-align: center;">  Welcome!! </h1>
+  <br>
+  <img src="ash&pika.jpg" alt="Ash and Pikachu" style="padding-left: 80px;">
+  <br><br>
 </div>
 <div id="Item" class="tabcontent">
   <h1><br>Item</h1>

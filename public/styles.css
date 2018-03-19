@@ -181,7 +181,17 @@ button {
   border-radius: 10px;
   font-size: 1em;
 }
-#pokemonInput, #itemInput, #typeInput {
+.todoSelect {
+  width: 12.5%;
+  padding: 5px;
+  border-radius: 3px;
+  border: 2px solid #222224;
+  font-family: 'Pokemon GB';
+  background-color: lightgray;
+  font-size: 100%;
+  font-size: 1em;
+}
+#pokemonInput, #itemInput, #typeInput, .todoInput {
   width: 38%;
   padding: 5px;
   border-radius: 3px;
@@ -192,7 +202,16 @@ button {
   padding-left: 12px;
   font-size: 1em;
 }
-#pokemonSubmit, #itemSubmit, #typeSubmit {
+.todoSubmit {
+  width: 16%;
+  padding: 10px;
+  background-color: #222224;
+  font-size: 1em;
+  color: #f0f0f0;
+  font-family: 'Pokemon GB';
+}
+
+#pokemonSubmit, #itemSubmit, #typeSubmit{
   width: 39%;
   padding: 10px;
   background-color: #222224;
@@ -545,13 +564,16 @@ li {
     align-items: center;
 }
 
-.delete {
-    display: none;
-    margin-left: auto;
+#todos {
+  background-color: red;
 }
-
-li:hover .delete {
-    display: block;
+#todos button {
+  border: 2px solid #333;
+  background-color: lightgray;
+}
+.delete {
+    margin-left: auto;
+    width: 9%;
 }
 
 .decrease {
@@ -569,26 +591,29 @@ label {
 
 /* Form */
 
-input[type=checkbox] {
-    transform: scale(1.5);
-    margin-right: 10px;
-}
 
-input[type=text] {
-    font-size: 1em;
-}
 
-button {
-    font-family: 'Arvo';
-    font-size: 1em;
-}
+
 
 
 /* Controls */
-
 .controls {
-    margin-top: 20px;
+
 }
+
+.controls button {
+  width: 18%;
+  padding-left: 0px;
+  background-color: #222224;
+  font-size: .9em;
+  color: #f0f0f0;
+  font-family: 'Pokemon GB';
+  position: relative;
+  margin-bottom: 8px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
 
 footer {
   text-align: center;
