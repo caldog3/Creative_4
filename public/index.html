@@ -35,6 +35,14 @@
             </select>
             <br>
             <button type="submit" class="todoSubmit">Add</button>
+            <label style="font-size: 1.1em; padding-left: 15.5em;">Pok&eacute;ball</label>
+            <select name="bally" v-model="bally" class="todoSelectBall">
+              <option value=R selected>Regular</option>
+              <option value=G>Great</option>
+              <option value=U>Ultra</option>
+              <option value=M>Master</option>
+            </select>
+
         </form>
         <br><h4 style="padding-left: 5em;"> Select View Type:</h4><br>
         <div class="controls">
@@ -49,7 +57,7 @@
         <ul>
             <li id="todos" v-for="item in filteredItems" draggable="true" v-on:dragstart="dragItem(item)" v-on:dragover.prevent v-on:drop="dropItem(item)">
                 <input type="checkbox" v-model="item.completed" v-on:click="completeItem(item)" />
-                <label v-bind:class="{ completed: item.completed }"style="padding-left:.5em;line-height:1.5em;">{{ item.text }} | {{ item.priority }}</label>
+                <label v-bind:class="{ completed: item.completed }"style="padding-left:.5em;line-height:1.5em;">{{ item.text }} | {{ item.priority }} | {{item.bally}}</label>
                 <button v-on:click="increasePriority(item)" class="increase">Up</button>
                 <button v-on:click="decreasePriority(item)" class="decrease">Down</button>
                 <button v-on:click="deleteItem(item)" class="delete">X</button>

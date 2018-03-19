@@ -191,6 +191,16 @@ button {
   font-size: 100%;
   font-size: 1em;
 }
+.todoSelectBall {
+  width: 18%;
+  padding: 5px;
+  border-radius: 3px;
+  border: 2px solid #222224;
+  font-family: 'Pokemon GB';
+  background-color: lightgray;
+  font-size: 100%;
+  font-size: 1em;
+}
 #pokemonInput, #itemInput, #typeInput, .todoInput {
   width: 38%;
   padding: 5px;

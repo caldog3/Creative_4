@@ -4,7 +4,7 @@ var app = new Vue({
     items: [],
     text: "",
     priority: 'low',
-    bally: 'regular',
+    bally: 'R',
     show: "all",
     drag: {},
     //url: "http://localhost:3004/api/items/"
@@ -54,10 +54,12 @@ var app = new Vue({
         .post(this.url, {
           text: this.text,
           completed: false,
+          bally: this.bally,
           priority: this.priority
         })
         .then(response => {
           this.text = "";
+          this.bally = 'R';
           this.priority = 'low';
           this.getItems();
           return true;
@@ -70,6 +72,7 @@ var app = new Vue({
           text: item.text,
           completed: !item.completed,
           priority: item.priority,
+          bally: item.bally,
           orderChange: false
         })
         .then(response => {
@@ -112,6 +115,7 @@ var app = new Vue({
           text: this.drag.text,
           completed: this.drag.completed,
           priority: this.drag.priority,
+          bally: this.drag.bally,
           orderChange: true,
           orderTarget: item.id
         })
@@ -141,6 +145,7 @@ var app = new Vue({
         .put(this.url + item.id, {
           text: item.text,
           completed: item.completed,
+          bally: item.bally,
           priority: item.priority,
           orderChange: false
         })
@@ -161,6 +166,7 @@ var app = new Vue({
         .put(this.url + item.id, {
           text: item.text,
           completed: item.completed,
+          bally: item.bally,
           priority: item.priority,
           orderChange: false
         })
